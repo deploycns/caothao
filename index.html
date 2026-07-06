@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Portfolio – Cao Phương Thảo | Nhập môn Công nghệ số</title>
+  <meta name="description" content="Portfolio học tập 6 tuần – Cao Phương Thảo – MSV 25040244 –  – Đại học Ngoại ngữ ĐHQGHN 2026."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Playfair+Display:ital,wght@0,700;0,900;1,500&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --c1:#dbe4ff;--c2:#91a7ff;--c3:#5c7cfa;--c4:#3b5bdb;
+  --warm1:#f3d9fa;--warm2:#cc5de8;--cool1:#c5f6fa;--cool2:#22b8cf;
+  --olive1:#ffd8a8;--olive2:#fd7e14;
+  --bg:#f8f9fa;--txt:#212529;--txt2:#495057;--txt3:#868e96;
+  --gbg:rgba(255,255,255,.65);--gbr:rgba(92,124,250,.35);
+  --gbl:blur(20px);
+  --sh1:0 2px 16px rgba(59,91,219,.09);
+  --sh2:0 8px 40px rgba(59,91,219,.15);
+  --sh3:0 20px 72px rgba(59,91,219,.22);
+  --glow:0 0 40px rgba(92,124,250,.35);
+  --r:22px;--rs:12px;
+  --e:cubic-bezier(.4,0,.2,1);--t:.38s var(--e);
+}
+html{scroll-behavior:smooth}
+body{font-family:'Be Vietnam Pro',sans-serif;background:var(--bg);color:var(--txt);min-height:100vh;overflow-x:hidden}
+#pc{position:fixed;inset:0;z-index:0;pointer-events:none}
+.blobs{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+.blob{position:absolute;border-radius:50%;filter:blur(90px);opacity:.38;mix-blend-mode:multiply}
+.ba{width:700px;height:700px;background:radial-gradient(circle,var(--c1),var(--warm1));top:-180px;left:-200px;animation:bd 18s ease-in-out infinite alternate}
+.bb{width:550px;height:550px;background:radial-gradient(circle,var(--warm1),var(--cool1));top:40%;right:-160px;animation:bd 22s ease-in-out infinite alternate-reverse}
+.bc{width:480px;height:480px;background:radial-gradient(circle,var(--cool1),var(--c1));bottom:-100px;left:30%;animation:bd 16s ease-in-out infinite alternate}
+.bd{width:380px;height:380px;background:radial-gradient(circle,var(--olive1),var(--warm1));bottom:20%;right:10%;animation:bd 20s ease-in-out infinite alternate-reverse}
+@keyframes bd{from{transform:translate(0,0)scale(1)rotate(0deg)}to{transform:translate(50px,40px)scale(1.12)rotate(8deg)}}
+.leaves{position:fixed;inset:0;z-index:0;pointer-events:none}
+.leaf{position:absolute;border-radius:0% 100% 0% 100%/0% 100% 0% 100%;opacity:0;animation:lf linear infinite;will-change:transform}
+@keyframes lf{0%{opacity:0;transform:translateY(-30px)rotate(0deg)translateX(0)}8%{opacity:.7}92%{opacity:.5}100%{opacity:0;transform:translateY(110vh)rotate(540deg)translateX(60px)}}
+/* NAV */
+#nav{position:fixed;top:0;left:0;right:0;z-index:1000;height:70px;background:rgba(248,249,250,.82);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-bottom:1px solid var(--gbr);display:flex;align-items:center;justify-content:space-between;padding:0 2.5rem;box-shadow:var(--sh1);transition:var(--t)}
+#nav.sc{background:rgba(248,249,250,.96);box-shadow:0 4px 32px rgba(59,91,219,.14)}
+.nl{display:flex;align-items:center;gap:.6rem;text-decoration:none;font-family:'Playfair Display',serif;font-size:1.25rem;font-weight:700;color:var(--txt);letter-spacing:.02em}
+.ld{width:10px;height:10px;border-radius:50%;background:linear-gradient(135deg,var(--c2),var(--warm2));animation:pd 2s ease-in-out infinite;flex-shrink:0}
+@keyframes pd{0%,100%{transform:scale(1);box-shadow:0 0 0 0 rgba(92,124,250,.4)}50%{transform:scale(1.2);box-shadow:0 0 0 6px rgba(92,124,250,0)}}
+.nls{display:flex;gap:.3rem;align-items:center}
+.nls a{text-decoration:none;color:var(--txt2);font-size:.87rem;font-weight:500;padding:.4rem 1rem;border-radius:50px;transition:var(--t);position:relative;overflow:hidden}
+.nls a::after{content:'';position:absolute;bottom:6px;left:50%;right:50%;height:2px;background:var(--c2);border-radius:2px;transition:var(--t);opacity:0}
+.nls a:hover::after,.nls a.act::after{left:14px;right:14px;opacity:1}
+.nls a:hover{color:var(--txt);background:rgba(92,124,250,.18)}
+.nls a.act{color:var(--c3);background:rgba(92,124,250,.22)}
+.npb{position:absolute;bottom:0;left:0;height:3px;background:linear-gradient(90deg,var(--c2),var(--warm2),var(--cool2));border-radius:0 3px 3px 0;width:0%;transition:width .1s linear}
+/* CURSOR */
+.cg{width:300px;height:300px;border-radius:50%;background:radial-gradient(circle,rgba(92,124,250,.12)0%,transparent 70%);position:fixed;pointer-events:none;z-index:0;transform:translate(-50%,-50%);transition:.05s linear}
+/* HERO */
+#hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:7rem 2rem 4rem;text-align:center;position:relative;z-index:1}
+.he{display:inline-flex;align-items:center;gap:.6rem;background:var(--gbg);border:1.5px solid var(--gbr);backdrop-filter:var(--gbl);border-radius:50px;padding:.45rem 1.4rem;font-size:.78rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--txt2);margin-bottom:2.2rem;animation:fsd .8s var(--e) both}
+.pr{width:8px;height:8px;border-radius:50%;background:var(--c2);position:relative}
+.pr::after{content:'';position:absolute;inset:-4px;border-radius:50%;border:2px solid var(--c2);animation:rp 2s ease-in-out infinite}
+@keyframes rp{0%,100%{transform:scale(1);opacity:.6}50%{transform:scale(2);opacity:0}}
+.haw{position:relative;width:150px;height:150px;margin:0 auto 2rem;animation:fsd .9s var(--e) .1s both}
+.har{position:absolute;inset:-12px;border-radius:50%;border:2px solid transparent;background:linear-gradient(var(--bg),var(--bg)) padding-box,linear-gradient(135deg,var(--c2),var(--warm2),var(--cool2)) border-box;animation:sp 8s linear infinite}
+@keyframes sp{to{transform:rotate(360deg)}}
+.har2{position:absolute;inset:-22px;border-radius:50%;border:1px solid transparent;background:linear-gradient(var(--bg),var(--bg)) padding-box,linear-gradient(225deg,var(--olive2),var(--c2),var(--warm2)) border-box;animation:sp 14s linear infinite reverse;opacity:.5}
+.ha{width:150px;height:150px;border-radius:50%;background:linear-gradient(135deg,var(--c1),var(--cool1),var(--warm1));display:flex;align-items:center;justify-content:center;font-size:4rem;position:relative;z-index:2;box-shadow:var(--sh2),var(--glow);animation:af 4s ease-in-out infinite}
+@keyframes af{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+.hn{font-family:'Playfair Display',serif;font-size:clamp(2.6rem,6vw,4.8rem);font-weight:900;line-height:1.1;background:linear-gradient(135deg,#18223c 0%,var(--c3) 40%,var(--cool2) 70%,var(--c3) 100%);background-size:200% 100%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:fsu .9s var(--e) .2s both,sh 5s ease infinite 2s;margin-bottom:.6rem}
+@keyframes sh{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
+@keyframes fsu{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fsd{from{opacity:0;transform:translateY(-24px)}to{opacity:1;transform:translateY(0)}}
+.hs{font-size:1.08rem;color:var(--txt2);font-weight:500;margin-bottom:.5rem;animation:fsu .9s var(--e) .3s both}
+.hm{font-size:.9rem;color:var(--txt3);margin-bottom:.35rem;animation:fsu .9s var(--e) .35s both}
+.hm strong{color:var(--txt2);font-weight:600}
+.hmc{font-size:.88rem;color:var(--txt3);margin-bottom:2.6rem;animation:fsu .9s var(--e) .4s both}
+.hcs{display:flex;flex-wrap:wrap;gap:.65rem;justify-content:center;margin-bottom:3.5rem;animation:fsu .9s var(--e) .5s both}
+.chip{display:inline-flex;align-items:center;gap:.4rem;padding:.42rem 1.15rem;border-radius:50px;font-size:.82rem;font-weight:500;border:1.5px solid;transition:var(--t);cursor:default;backdrop-filter:blur(8px);position:relative;overflow:hidden}
+.chip::before{content:'';position:absolute;inset:0;opacity:0;background:linear-gradient(90deg,transparent,rgba(255,255,255,.4),transparent);transition:var(--t);transform:translateX(-100%)}
+.chip:hover::before{transform:translateX(100%);opacity:1}
+.chip:hover{transform:translateY(-3px);box-shadow:var(--sh2)}
+.cg1{background:rgba(219,228,255,.7);border-color:var(--c2);color:#364fc7}
+.cw{background:rgba(243,217,250,.7);border-color:var(--warm2);color:#862e9c}
+.cc{background:rgba(197,246,250,.7);border-color:var(--cool2);color:#0b7285}
+.co{background:rgba(255,216,168,.7);border-color:var(--olive2);color:#d9480f}
+.scue{display:flex;flex-direction:column;align-items:center;gap:.5rem;animation:fsu 1s var(--e) .9s both;color:var(--txt3);font-size:.78rem;letter-spacing:.1em;text-transform:uppercase}
+.scue .wh{width:32px;height:50px;border:2px solid var(--c2);border-radius:16px;display:flex;justify-content:center;padding-top:8px;box-shadow:0 0 16px rgba(92,124,250,.3)}
+.scue .wh::after{content:'';width:5px;height:10px;background:var(--c2);border-radius:3px;animation:wr 2s ease-in-out infinite}
+@keyframes wr{0%,100%{transform:translateY(0);opacity:1}60%{transform:translateY(14px);opacity:0}}
+/* SECTIONS */
+.sw{max-width:1140px;margin:0 auto;padding:6rem 2rem;position:relative;z-index:1}
+.sh{text-align:center;margin-bottom:4rem}
+.se{display:inline-block;font-size:.72rem;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:var(--c3);margin-bottom:.9rem;position:relative;padding:0 1rem}
+.se::before,.se::after{content:'';position:absolute;top:50%;width:24px;height:1.5px;background:var(--c2)}
+.se::before{right:100%;margin-right:-1rem}
+.se::after{left:100%;margin-left:-1rem}
+.st{font-family:'Playfair Display',serif;font-size:clamp(2rem,3.8vw,3rem);color:var(--txt);line-height:1.2}
+.st em{color:var(--c3);font-style:italic}
+.sd{margin-top:1rem;color:var(--txt2);font-size:.97rem;max-width:560px;margin-left:auto;margin-right:auto;line-height:1.8}
+/* REVEAL */
+.rv{opacity:0;transform:translateY(36px);transition:opacity .75s var(--e),transform .75s var(--e)}
+.rv.vis{opacity:1;transform:translateY(0)}
+.rvl{opacity:0;transform:translateX(-36px);transition:opacity .7s var(--e),transform .7s var(--e)}
+.rvl.vis{opacity:1;transform:translateX(0)}
+.rvr{opacity:0;transform:translateX(36px);transition:opacity .7s var(--e),transform .7s var(--e)}
+.rvr.vis{opacity:1;transform:translateX(0)}
+.d1{transition-delay:.08s}.d2{transition-delay:.18s}.d3{transition-delay:.28s}
+/* GLASS CARD */
+.gc{background:var(--gbg);backdrop-filter:var(--gbl);border:1.5px solid var(--gbr);border-radius:var(--r);padding:2.2rem;box-shadow:var(--sh1);transition:var(--t);position:relative;overflow:hidden}
+.gc::before{content:'';position:absolute;top:-40%;left:-30%;width:80%;height:80%;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.35)0%,transparent 70%);pointer-events:none}
+.gc:hover{transform:translateY(-6px);box-shadow:var(--sh3);background:rgba(255,255,255,.75);border-color:rgba(92,124,250,.55)}
+.ci{width:52px;height:52px;border-radius:var(--rs);background:linear-gradient(135deg,var(--c1),var(--cool1));display:flex;align-items:center;justify-content:center;font-size:1.6rem;margin-bottom:1.2rem;box-shadow:0 4px 16px rgba(34,184,207,.2);transition:var(--t)}
+.gc:hover .ci{transform:rotate(-6deg)scale(1.1)}
+.gc h3{font-family:'Playfair Display',serif;font-size:1.2rem;color:var(--txt);margin-bottom:1rem}
+.gc ul{list-style:none;display:flex;flex-direction:column;gap:.55rem}
+.gc li{font-size:.9rem;color:var(--txt2);line-height:1.6;display:flex;align-items:flex-start;gap:.5rem}
+.gc li::before{content:'✦';color:var(--c2);font-size:.65rem;margin-top:4px;flex-shrink:0}
+/* ABOUT GRID */
+.ag{display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:start}
+/* STATS */
+.sb{grid-column:1/-1;background:linear-gradient(135deg,var(--c3),var(--cool2),var(--olive2));border-radius:var(--r);padding:2.5rem;display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;position:relative;overflow:hidden;box-shadow:var(--sh2)}
+.sb::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.06'%3E%3Ccircle cx='30' cy='30' r='4'/%3E%3C/g%3E%3C/svg%3E")}
+.si{text-align:center;position:relative;z-index:1}
+.sn{font-family:'Playfair Display',serif;font-size:2.8rem;font-weight:900;color:#fff;line-height:1;text-shadow:0 2px 12px rgba(0,0,0,.15)}
+.sl{font-size:.78rem;color:rgba(255,255,255,.8);margin-top:.3rem;font-weight:500;letter-spacing:.05em}
+/* RUBRIC */
+.rw{grid-column:1/-1;background:var(--gbg);backdrop-filter:var(--gbl);border:1.5px solid var(--gbr);border-radius:var(--r);overflow:hidden;box-shadow:var(--sh1)}
+.rt{padding:1.4rem 2rem;font-family:'Playfair Display',serif;font-size:1.1rem;color:var(--txt);background:linear-gradient(135deg,rgba(219,228,255,.6),rgba(197,246,250,.6));display:flex;align-items:center;gap:.6rem;border-bottom:1px solid var(--gbr)}
+table{width:100%;border-collapse:collapse;font-size:.86rem}
+thead th{padding:.9rem 1.2rem;text-align:left;font-weight:700;color:var(--txt2);background:linear-gradient(135deg,rgba(219,228,255,.4),rgba(243,217,250,.4));font-size:.78rem;letter-spacing:.05em;text-transform:uppercase}
+tbody td{padding:.8rem 1.2rem;color:var(--txt2);border-bottom:1px solid rgba(92,124,250,.18);vertical-align:top;transition:background var(--t)}
+tbody tr:hover td{background:rgba(92,124,250,.1)}
+tbody tr:last-child td{border-bottom:none}
+.sp{display:inline-block;padding:.18rem .7rem;border-radius:50px;background:linear-gradient(135deg,var(--cool1),var(--c1));color:var(--c4);font-weight:800;font-size:.8rem;box-shadow:0 2px 8px rgba(34,184,207,.18)}
+/* WEEK CARDS */
+#weeks{padding:0}
+.wg{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:2.2rem}
+.wc{background:var(--gbg);backdrop-filter:var(--gbl);border:1.5px solid var(--gbr);border-radius:var(--r);overflow:hidden;box-shadow:var(--sh1);transition:box-shadow .3s var(--e),transform .15s linear;position:relative;will-change:transform}
+.wc::after{content:'';position:absolute;inset:0;border-radius:var(--r);background:linear-gradient(135deg,rgba(255,255,255,.18)0%,transparent 60%);pointer-events:none;opacity:0;transition:opacity var(--t)}
+.wc:hover::after{opacity:1}
+.wc:hover{box-shadow:var(--sh3),0 0 0 2px var(--ca)}
+.wc::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--cb1),var(--cb2));z-index:1}
+.wch{padding:1.6rem 1.8rem 1.3rem;background:linear-gradient(135deg,var(--cb1),var(--cb2));position:relative;overflow:hidden}
+.wchg{position:absolute;width:200px;height:200px;border-radius:50%;background:rgba(255,255,255,.22);top:-70px;right:-50px;filter:blur(10px)}
+.wchg2{position:absolute;width:120px;height:120px;border-radius:50%;background:rgba(255,255,255,.12);bottom:-40px;left:10px;filter:blur(8px)}
+.wct{display:flex;align-items:center;gap:1.1rem;position:relative;z-index:1}
+.wcb{background:rgba(255,255,255,.92);border-radius:var(--rs);width:60px;height:60px;flex-shrink:0;display:flex;flex-direction:column;align-items:center;justify-content:center;box-shadow:0 4px 14px rgba(0,0,0,.08)}
+.wcb .wn{font-family:'Playfair Display',serif;font-size:1.7rem;font-weight:900;color:var(--txt);line-height:1}
+.wcb .wl{font-size:.56rem;font-weight:800;color:var(--txt3);letter-spacing:.1em;text-transform:uppercase}
+.wci{flex:1;min-width:0}
+.wctt{font-family:'Playfair Display',serif;font-size:1.08rem;color:var(--txt);line-height:1.3;margin-bottom:.25rem}
+.wcsb{font-size:.78rem;color:var(--txt2)}
+.wcbd{padding:1.5rem 1.8rem 0}
+.wcd{font-size:.88rem;color:var(--txt2);line-height:1.75;margin-bottom:1.1rem}
+.wcta{list-style:none;margin-bottom:.5rem}
+.wcta li{display:flex;align-items:flex-start;gap:.55rem;font-size:.83rem;color:var(--txt2);padding:.35rem 0;border-bottom:1px dashed rgba(92,124,250,.28)}
+.wcta li:last-child{border-bottom:none}
+.td{width:7px;height:7px;border-radius:50%;background:var(--ca);margin-top:5px;flex-shrink:0;box-shadow:0 0 8px var(--ca)}
+/* Progress bar */
+.wcp{padding:1rem 1.8rem 0}
+.wcpl{font-size:.72rem;font-weight:700;color:var(--txt3);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.5rem;display:flex;justify-content:space-between}
+.wcpt{height:5px;background:rgba(92,124,250,.25);border-radius:3px;overflow:hidden}
+.wcpf{height:100%;border-radius:3px;transform:scaleX(0);transform-origin:left;transition:transform 1.2s var(--e)}
+.wcpf.an{transform:scaleX(1)}
+/* Action buttons row */
+.wda{padding:1.2rem 1.8rem;display:flex;flex-wrap:wrap;gap:.55rem}
+.ab{display:inline-flex;align-items:center;gap:.5rem;border-radius:50px;padding:.45rem 1.15rem;font-size:.8rem;font-weight:700;font-family:inherit;cursor:pointer;transition:var(--t);position:relative;overflow:hidden;box-shadow:0 3px 12px rgba(0,0,0,.06);text-decoration:none}
+.ab::before{content:'';position:absolute;inset:0;opacity:0;background:var(--ca);transition:opacity var(--t)}
+.ab span{position:relative;z-index:1}
+.ab:hover::before{opacity:1}
+.ab:hover{color:#fff;transform:translateY(-2px);box-shadow:0 6px 20px rgba(0,0,0,.15)}
+.ab-view{background:linear-gradient(135deg,rgba(255,255,255,.9),rgba(255,255,255,.7));border:1.5px solid var(--ca);color:var(--txt)}
+.ab-view.popen{background:var(--ca);color:#fff}
+.ab-view.popen::before{opacity:1}
+.ab-dl{background:linear-gradient(135deg,rgba(255,255,255,.9),rgba(255,255,255,.7));border:1.5px solid var(--ca);color:var(--txt)}
+.ab-photo{background:linear-gradient(135deg,rgba(255,255,255,.9),rgba(255,255,255,.7));border:1.5px dashed var(--ca);color:var(--txt)}
+/* PDF panel */
+.pp{max-height:0;overflow:hidden;transition:max-height .55s cubic-bezier(.4,0,.2,1);margin:0 1.8rem}
+.pp.open{max-height:720px}
+.ppw{border-radius:14px;overflow:hidden;border:1.5px solid rgba(92,124,250,.35);box-shadow:0 4px 24px rgba(59,91,219,.12);background:#fff;margin-bottom:1rem}
+.ppw iframe{width:100%;height:680px;border:none;display:block}
+/* Card footer */
+.wcf{padding:.9rem 1.8rem 1.5rem;display:flex;align-items:center;justify-content:flex-end;border-top:1px dashed rgba(92,124,250,.25)}
+.sbadge{display:inline-flex;align-items:center;gap:.35rem;font-size:.72rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--c3);background:rgba(92,124,250,.18);border-radius:50px;padding:.25rem .8rem}
+.sdot{width:6px;height:6px;border-radius:50%;background:var(--c2);animation:sb 2s ease-in-out infinite}
+@keyframes sb{0%,100%{opacity:1}50%{opacity:.3}}
+/* TIMELINE */
+#timeline{padding:0}
+.tlt{position:relative;padding-left:3rem}
+.tll{position:absolute;left:.85rem;top:0;bottom:0;width:2px;background:linear-gradient(180deg,var(--c2),var(--warm2),var(--cool2),var(--olive2));border-radius:2px}
+.tll::after{content:'';position:absolute;left:-3px;top:0;width:8px;height:8px;border-radius:50%;background:var(--c2);box-shadow:0 0 16px var(--c2);animation:lg 2s ease-in-out infinite}
+@keyframes lg{0%,100%{box-shadow:0 0 8px var(--c2)}50%{box-shadow:0 0 24px var(--c2)}}
+.tli{position:relative;margin-bottom:2.5rem;padding-left:1.5rem}
+.tli:last-child{margin-bottom:0}
+.tld{position:absolute;left:-2.5rem;top:.4rem;width:18px;height:18px;border-radius:50%;background:linear-gradient(135deg,var(--c2),var(--warm2));border:3px solid var(--bg);box-shadow:0 0 0 3px rgba(92,124,250,.35),0 0 16px rgba(92,124,250,.3);z-index:1;transition:var(--t)}
+.tli:hover .tld{transform:scale(1.4);box-shadow:0 0 0 5px rgba(92,124,250,.25),0 0 24px rgba(92,124,250,.4)}
+.tlc{background:var(--gbg);backdrop-filter:var(--gbl);border:1.5px solid var(--gbr);border-radius:var(--r);padding:1.6rem 2rem;box-shadow:var(--sh1);transition:var(--t)}
+.tlc:hover{transform:translateX(8px);box-shadow:var(--sh2)}
+.tlwl{font-size:.72rem;font-weight:800;color:var(--c3);text-transform:uppercase;letter-spacing:.14em;margin-bottom:.4rem}
+.tlc h3{font-family:'Playfair Display',serif;font-size:1.1rem;color:var(--txt);margin-bottom:.6rem}
+.tlc p{font-size:.88rem;color:var(--txt2);line-height:1.7}
+/* SUMMARY */
+#summary{padding:0}
+.sumg{display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin-bottom:2rem}
+.skg{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+.skc{background:var(--gbg);backdrop-filter:var(--gbl);border:1.5px solid var(--gbr);border-radius:var(--r);padding:1.4rem 1.6rem;display:flex;flex-direction:column;gap:.9rem;box-shadow:var(--sh1);transition:var(--t);position:relative;overflow:hidden}
+.skc::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--sk1),var(--sk2));transform:scaleX(0);transform-origin:left;transition:transform .4s var(--e)}
+.skc:hover::after{transform:scaleX(1)}
+.skc:hover{transform:translateY(-5px);box-shadow:var(--sh3)}
+.ski{font-size:2rem}
+.skn{font-weight:700;color:var(--txt);font-size:.92rem}
+.skbt{height:5px;background:rgba(92,124,250,.25);border-radius:3px;overflow:hidden}
+.skbf{height:100%;border-radius:3px;transform:scaleX(0);transform-origin:left;transition:transform 1.4s var(--e)}
+.skbf.an{transform:scaleX(1)}
+.fc{grid-column:1/-1;background:linear-gradient(135deg,var(--c3),var(--cool2));border-radius:var(--r);padding:2.5rem;position:relative;overflow:hidden;box-shadow:var(--sh2)}
+.fc h3{font-family:'Playfair Display',serif;font-size:1.5rem;color:#fff;margin-bottom:1rem;position:relative;z-index:1}
+.fc p{font-size:.95rem;color:rgba(255,255,255,.88);line-height:1.8;position:relative;z-index:1;max-width:680px}
+/* FOOTER */
+footer{background:linear-gradient(135deg,#192038,#25345c,#1f2d4f);padding:4rem 2rem 3rem;text-align:center;position:relative;z-index:1;overflow:hidden}
+footer::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at center top,rgba(92,124,250,.15)0%,transparent 70%)}
+.fl{font-family:'Playfair Display',serif;font-size:2rem;font-weight:900;color:#fff;margin-bottom:.6rem;position:relative}
+.fl span{color:var(--c2)}
+.fs{font-size:.88rem;color:rgba(255,255,255,.55);line-height:1.9;position:relative}
+.fh{display:inline-block;color:var(--c2);animation:hb 1.5s ease-in-out infinite}
+@keyframes hb{0%,100%{transform:scale(1)}50%{transform:scale(1.35)}}
+.fline{width:60px;height:1px;background:linear-gradient(90deg,transparent,var(--c2),transparent);margin:1.5rem auto}
+/* LIGHTBOX */
+#lb{display:none;position:fixed;inset:0;z-index:9999;background:rgba(10,20,8,.94);backdrop-filter:blur(12px);flex-direction:column;align-items:center;justify-content:center;padding:2rem}
+#lb.open{display:flex}
+.lbc{position:absolute;top:1.5rem;right:1.5rem;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:50%;width:46px;height:46px;cursor:pointer;color:#fff;font-size:1.2rem;display:flex;align-items:center;justify-content:center;transition:var(--t);font-family:inherit}
+.lbc:hover{background:var(--c3)}
+.lbt{position:absolute;top:1.7rem;left:50%;transform:translateX(-50%);color:rgba(255,255,255,.85);font-size:.88rem;font-weight:600;white-space:nowrap}
+.lbm{display:flex;align-items:center;gap:1.5rem;max-width:960px;width:100%}
+.lba{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:50%;width:50px;height:50px;flex-shrink:0;cursor:pointer;color:#fff;font-size:1.5rem;display:flex;align-items:center;justify-content:center;transition:var(--t);font-family:inherit}
+.lba:hover{background:var(--c3)}
+#lbimg{max-width:100%;max-height:70vh;object-fit:contain;border-radius:16px;flex:1}
+.lbth{display:flex;gap:8px;margin-top:1.2rem;overflow-x:auto;max-width:100%;padding-bottom:4px}
+.lbth img{width:64px;height:50px;object-fit:cover;border-radius:8px;cursor:pointer;opacity:.5;border:2px solid transparent;transition:var(--t);flex-shrink:0}
+.lbth img.act{opacity:1;border-color:var(--c2)}
+#lbcnt{color:rgba(255,255,255,.45);font-size:.8rem;margin-top:.6rem}
+/* RESPONSIVE */
+@media(max-width:900px){.ag,.sumg{grid-template-columns:1fr}.skg{grid-template-columns:repeat(2,1fr)}.sb{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:640px){.nls{display:none}.wg{grid-template-columns:1fr}.skg{grid-template-columns:1fr 1fr}.sb{grid-template-columns:repeat(2,1fr)}.hn{font-size:2.4rem}.sw{padding:4rem 1.2rem}.tlt{padding-left:2.2rem}}
+</style>
+</head>
+<body>
+<div class="cg" id="cg"></div>
+<canvas id="pc"></canvas>
+<div class="blobs"><div class="blob ba"></div><div class="blob bb"></div><div class="blob bc"></div><div class="blob bd"></div></div>
+<div class="leaves" id="ll"></div>
+
+<nav id="nav">
+  <a href="#hero" class="nl"><div class="ld"></div>Phương Thảo <span style="color:var(--c2);font-style:italic;">Portfolio</span></a>
+  <div class="nls">
+    <a href="#about" id="na">Giới thiệu</a>
+    <a href="#weeks" id="nw">6 Tuần học</a>
+    <a href="#timeline" id="nt">Hành trình</a>
+    <a href="#summary" id="ns">Tổng kết</a>
+  </div>
+  <div class="npb" id="npb"></div>
+</nav>
+
+<section id="hero">
+  <div class="he"><div class="pr"></div>Portfolio học tập · 2026</div>
+  <div class="haw"><div class="har2"></div><div class="har"></div><div class="ha">🍵</div></div>
+  <h1 class="hn">Cao Phương Thảo</h1>
+  <p class="hs">Sinh viên · Đại học Ngoại ngữ – ĐHQGHN</p>
+  <p class="hm"><strong>MSV: 25040244</strong> &nbsp;·&nbsp; </p>
+  <p class="hmc">Nhập môn Công nghệ số và Ứng dụng Trí tuệ nhân tạo</p>
+  <div class="hcs">
+    <span class="chip cg1">🗂️ Quản lý tệp</span>
+    <span class="chip cc">🔍 Tìm kiếm thông tin</span>
+    <span class="chip co">✍️ Prompt Engineering</span>
+    <span class="chip cw">🤝 Hợp tác trực tuyến</span>
+    <span class="chip cg1">🎨 Sáng tạo với AI</span>
+    <span class="chip cc">⚖️ AI có trách nhiệm</span>
+  </div>
+  <div class="scue"><span>Khám phá</span><div class="wh"></div></div>
+</section>
+
+<section id="about"><div class="sw">
+  <div class="sh rv">
+    <div class="se">Về Portfolio</div>
+    <h2 class="st">Hành trình <em>6 tuần</em> học tập</h2>
+    <p class="sd">Portfolio ghi lại toàn bộ quá trình học tập, thực hành và khám phá trong môn học <strong>Nhập môn Công nghệ số và Ứng dụng Trí tuệ nhân tạo</strong>.</p>
+  </div>
+  <div class="ag">
+    <div class="gc rv rvl d1">
+      <div class="ci">🎯</div><h3>Mục tiêu môn học</h3>
+      <ul>
+        <li>Nắm vững kỹ năng quản lý tệp &amp; thư mục hiệu quả</li>
+        <li>Thành thạo tìm kiếm và đánh giá thông tin học thuật</li>
+        <li>Ứng dụng Prompt Engineering vào học tập thực tiễn</li>
+        <li>Khai thác công cụ hợp tác trực tuyến cho dự án nhóm</li>
+        <li>Sử dụng AI tạo sinh để sáng tạo nội dung số</li>
+        <li>Hiểu và thực hành đạo đức khi sử dụng AI</li>
+      </ul>
+    </div>
+    <div class="gc rv rvr d1">
+      <div class="ci">📋</div><h3>Thông tin cá nhân</h3>
+      <ul>
+        <li><strong>Họ tên:</strong> Cao Phương Thảo</li>
+        <li><strong>Mã SV:</strong> 25040244</li>
+        <li><strong>Lớp:</strong> VNU1001_E252062</li>
+        <li><strong>Trường:</strong> Đại học Ngoại ngữ – ĐHQGHN</li>
+        <li><strong>Môn học:</strong> Nhập môn Công nghệ số và Ứng dụng AI</li>
+        <li><strong>Số tuần:</strong> 6 tuần học &amp; thực hành</li>
+      </ul>
+    </div>
+    <div class="sb rv d2">
+      <div class="si"><div class="sn" data-count="6">0</div><div class="sl">Tuần học</div></div>
+      <div class="si"><div class="sn" data-count="6">0</div><div class="sl">Bài tập nộp</div></div>
+      <div class="si"><div class="sn" data-count="9">0</div><div class="sl">Điểm tối đa</div></div>
+      <div class="si"><div class="sn" data-count="100">0</div><div class="sl">% Hoàn thành</div></div>
+    </div>
+    <div class="rw rv d3">
+      <div class="rt">📊 Rubric đánh giá Portfolio</div>
+      <table>
+        <thead><tr><th>STT</th><th>Tiêu chí</th><th>Điểm</th><th>Mô tả Mức 4 (Xuất sắc)</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td>Thiết kế Portfolio</td><td><span class="sp">3</span></td><td>Sáng tạo, độc đáo; tích hợp đa phương tiện; tối ưu trải nghiệm.</td></tr>
+          <tr><td>2</td><td>Tuần 1 – Quản lý tệp</td><td><span class="sp">1</span></td><td>Cấu trúc khoa học; quy tắc đặt tên sáng tạo; hiểu sâu sắc.</td></tr>
+          <tr><td>3</td><td>Tuần 2 – Tìm kiếm</td><td><span class="sp">1</span></td><td>Sử dụng linh hoạt toán tử; phân tích chiến lược tìm kiếm sâu.</td></tr>
+          <tr><td>4</td><td>Tuần 3 – Viết Prompt</td><td><span class="sp">1</span></td><td>Áp dụng Prompt Engineering; so sánh cơ chế hoạt động AI.</td></tr>
+          <tr><td>5</td><td>Tuần 4 – Hợp tác nhóm</td><td><span class="sp">1</span></td><td>Tích hợp tính năng nâng cao; tối ưu quy trình nhóm.</td></tr>
+          <tr><td>6</td><td>Tuần 5 – Sáng tạo AI</td><td><span class="sp">1</span></td><td>Sản phẩm chuyên nghiệp; tận dụng tối đa AI sáng tạo.</td></tr>
+          <tr><td>7</td><td>Tuần 6 – AI có trách nhiệm</td><td><span class="sp">1</span></td><td>Bộ nguyên tắc chi tiết; tư duy phản biện cao.</td></tr>
+          <tr><td>8</td><td>Tổng kết &amp; Đánh giá</td><td><span class="sp">1</span></td><td>Phân tích sâu sắc sự trưởng thành và định hướng tương lai.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div></section>
+
+<section id="weeks"><div class="sw">
+  <div class="sh rv">
+    <div class="se">Nhật ký học tập</div>
+    <h2 class="st">6 Tuần <em>thực hành</em></h2>
+    <p class="sd">Nhấn <strong>👁 Xem bài tập</strong> để đọc nội dung PDF ngay trên trang, hoặc tải về máy.</p>
+  </div>
+  <div class="wg" id="wg"></div>
+</div></section>
+
+<section id="timeline"><div class="sw">
+  <div class="sh rv">
+    <div class="se">Hành trình</div>
+    <h2 class="st">Từng bước <em>tiến bộ</em></h2>
+    <p class="sd">Nhìn lại mỗi cột mốc — từng tuần là một bước trưởng thành mới.</p>
+  </div>
+  <div class="tlt"><div class="tll"></div><div id="tli"></div></div>
+</div></section>
+
+<section id="summary"><div class="sw">
+  <div class="sh rv">
+    <div class="se">Tổng kết</div>
+    <h2 class="st">Nhìn lại <em>hành trình</em></h2>
+    <p class="sd">Những gì tôi đã học, đã làm và mang theo sau 6 tuần.</p>
+  </div>
+  <div class="sumg">
+    <div class="gc rv rvl">
+      <div class="ci">🌱</div><h3>Những gì tôi đã học</h3>
+      <ul>
+        <li>Tổ chức tệp &amp; thư mục một cách khoa học</li>
+        <li>Kỹ năng tìm kiếm nâng cao (site:, filetype:, "…")</li>
+        <li>Viết Prompt theo cấu trúc vai trò–bối cảnh–yêu cầu</li>
+        <li>Cộng tác nhóm hiệu quả qua nền tảng trực tuyến</li>
+        <li>Sáng tạo nội dung số với AI tạo sinh</li>
+        <li>Nhận thức về đạo đức và trách nhiệm khi dùng AI</li>
+      </ul>
+    </div>
+    <div class="gc rv rvr d1">
+      <div class="ci">💡</div><h3>Bài học kinh nghiệm</h3>
+      <ul>
+        <li>Đặt câu hỏi rõ ràng → AI trả lời tốt hơn đáng kể</li>
+        <li>Tổ chức trước, thực hiện sau – tiết kiệm thời gian</li>
+        <li>Tìm kiếm có chiến lược quan trọng hơn tìm nhiều</li>
+        <li>Hợp tác online cần quy tắc &amp; phân công rõ ràng</li>
+        <li>AI là công cụ – con người làm chủ và chịu trách nhiệm</li>
+      </ul>
+    </div>
+  </div>
+  <div style="margin-top:3rem">
+    <div class="sh" style="margin-bottom:2rem"><div class="se">Kỹ năng đạt được</div></div>
+    <div class="skg rv d2" id="skg"></div>
+  </div>
+  <div class="fc rv d3" style="margin-top:2rem">
+    <h3>🚀 Định hướng tương lai</h3>
+    <p>Sau khoá học này, tôi nhận ra rằng việc sử dụng công nghệ một cách thông minh, có trách nhiệm và sáng tạo là kỹ năng cốt lõi của thời đại số. Là sinh viên Đại học Ngoại ngữ – ĐHQGHN, tôi sẽ kết hợp năng lực ngôn ngữ với kỹ năng công nghệ số để nâng cao hiệu quả học tập, nghiên cứu và giao tiếp quốc tế — đặc biệt trong việc khai thác AI như một người bạn đồng hành thông minh và có trách nhiệm.</p>
+  </div>
+</div></section>
+
+<footer>
+  <div class="fl">Lại Minh <span>Ngọc</span></div>
+  <div class="fline"></div>
+  <p class="fs">Portfolio · Nhập môn Công nghệ số &amp; Ứng dụng AI<br>MSV: 25040244 · <br>Đại học Ngoại ngữ – ĐHQGHN · 2026<br><br>Làm bằng <span class="fh">♥</span> và niềm đam mê học hỏi</p>
+</footer>
+
+<div id="lb">
+  <button class="lbc" id="lbc">✕</button>
+  <div class="lbt" id="lbt"></div>
+  <div class="lbm">
+    <button class="lba" id="lbp">‹</button>
+    <img id="lbimg" src="" alt="Ảnh phóng to"/>
+    <button class="lba" id="lbn">›</button>
+  </div>
+  <div class="lbth" id="lbth"></div>
+  <div id="lbcnt"></div>
+</div>
+
+<script>
+/* DATA */
+const WKS=[
+  {id:1,e:'🗂️',t:'Quản lý tệp và thư mục',s:'Tổ chức & đặt tên khoa học',
+   d:'Thực hành tạo cấu trúc thư mục logic, áp dụng quy tắc đặt tên tệp nhất quán và quản lý dữ liệu cá nhân hiệu quả.',
+   tasks:['Tạo cấu trúc thư mục nhiều cấp theo chủ đề','Áp dụng quy tắc đặt tên tệp chuẩn hoá','Thực hiện các thao tác cơ bản với tệp tin'],
+   pdf:'t1.pdf',b1:'rgba(243,217,250,.9)',b2:'rgba(219,228,255,.9)',ca:'hsl(230,100%,67%)',s1:'#91a7ff',s2:'#5c7cfa',imgs:[],pct:100,
+   tld:'Khám phá cách tổ chức dữ liệu khoa học, xây dựng thói quen đặt tên tệp chuẩn và hiểu tầm quan trọng của quản lý thông tin số.'},
+  {id:2,e:'🔍',t:'Tìm kiếm thông tin học thuật',s:'Toán tử nâng cao & tư duy phản biện',
+   d:'Sử dụng các toán tử tìm kiếm nâng cao để tra cứu chính xác, đánh giá độ tin cậy và so sánh nguồn thông tin đa chiều.',
+   tasks:['Sử dụng toán tử site:, filetype:, AND/OR…','So sánh kết quả từ nhiều nguồn khác nhau','Đánh giá độ tin cậy của thông tin tìm thấy'],
+   pdf:'t2.pdf',b1:'rgba(197,246,250,.9)',b2:'rgba(219,228,255,.9)',ca:'hsl(188,72%,47%)',s1:'#22b8cf',s2:'#1098ad',imgs:[],pct:100,
+   tld:'Nắm vững kỹ thuật tìm kiếm nâng cao, biết cách đánh giá và lọc thông tin đáng tin cậy trong biển dữ liệu của internet.'},
+  {id:3,e:'✍️',t:'Viết Prompt hiệu quả',s:'Nghệ thuật giao tiếp với AI',
+   d:'Thực hành viết prompt theo cấu trúc rõ ràng, lặp và cải tiến qua nhiều vòng để đạt kết quả tối ưu từ các mô hình AI.',
+   tasks:['Viết prompt ban đầu và phân tích kết quả','Cải tiến prompt qua nhiều vòng lặp','So sánh chất lượng phản hồi và phân tích AI'],
+   pdf:'t3.pdf',b1:'rgba(255,216,168,.9)',b2:'rgba(243,217,250,.9)',ca:'hsl(288,72%,47%)',s1:'#cc5de8',s2:'#ae3ec9',imgs:[],pct:100,
+   tld:'Khám phá nghệ thuật Prompt Engineering — cách đặt câu hỏi đúng cách để AI cho ra những câu trả lời chính xác và hữu ích nhất.'},
+  {id:4,e:'🤝',t:'Hợp tác trực tuyến',s:'Công cụ số & làm việc nhóm',
+   d:'Ứng dụng các công cụ quản lý dự án và cộng tác online để lên kế hoạch, phân công nhiệm vụ và theo dõi tiến độ nhóm hiệu quả.',
+   tasks:['Tạo không gian làm việc nhóm trực tuyến','Phân công nhiệm vụ & theo dõi tiến độ','Tổ chức họp trực tuyến và ghi chép kết quả'],
+   pdf:'t4.pdf',b1:'rgba(243,217,250,.9)',b2:'rgba(197,246,250,.9)',ca:'hsl(28,100%,50%)',s1:'#fd7e14',s2:'#e8590c',imgs:[],pct:100,
+   tld:'Trải nghiệm làm việc nhóm trong môi trường số, học cách sử dụng công cụ cộng tác để tối ưu hoá năng suất và giao tiếp nhóm.'},
+  {id:5,e:'🎨',t:'Sáng tạo nội dung với AI',s:'Ứng dụng AI tạo sinh',
+   d:'Sử dụng các công cụ AI tạo sinh để lên ý tưởng, sáng tạo hình ảnh và nội dung số chuyên nghiệp một cách nhanh chóng.',
+   tasks:['Lên ý tưởng sáng tạo cùng AI','Tạo sinh hình ảnh & nội dung văn bản','Hoàn thiện và xuất sản phẩm hoàn chỉnh'],
+   pdf:'t5.pdf',b1:'rgba(219,228,255,.9)',b2:'rgba(255,216,168,.9)',ca:'hsl(270,72%,47%)',s1:'#cc5de8',s2:'#862e9c',imgs:[],pct:100,
+   tld:'Bước vào thế giới sáng tạo cùng AI tạo sinh — khai thác sức mạnh của các mô hình ngôn ngữ và hình ảnh để tạo ra sản phẩm độc đáo.'},
+  {id:6,e:'⚖️',t:'AI có trách nhiệm',s:'Đạo đức & nguyên tắc sử dụng',
+   d:'Xây dựng bộ nguyên tắc cá nhân khi sử dụng AI, phân tích các rủi ro tiềm ẩn và đề xuất giải pháp sử dụng có trách nhiệm.',
+   tasks:['Xây dựng bộ nguyên tắc sử dụng AI cá nhân','Phân tích các rủi ro và thách thức của AI','Đề xuất giải pháp và phương pháp sử dụng an toàn'],
+   pdf:'t6.pdf',b1:'rgba(197,246,250,.9)',b2:'rgba(219,228,255,.9)',ca:'hsl(188,72%,40%)',s1:'#22b8cf',s2:'#0b7285',imgs:[],pct:100,
+   tld:'Khép lại hành trình bằng việc suy nghĩ sâu về trách nhiệm đạo đức — xây dựng nền tảng để sử dụng AI một cách thông minh, an toàn và có ý thức.'}
+];
+const SKILLS=[
+  {i:'🗂️',n:'Quản lý dữ liệu',c1:'#91a7ff',c2:'#5c7cfa',p:.88},
+  {i:'🔍',n:'Tìm kiếm nâng cao',c1:'#22b8cf',c2:'#1098ad',p:.85},
+  {i:'✍️',n:'Prompt Engineering',c1:'#cc5de8',c2:'#ae3ec9',p:.9},
+  {i:'🤝',n:'Hợp tác trực tuyến',c1:'#fd7e14',c2:'#e8590c',p:.82},
+  {i:'🎨',n:'Sáng tạo nội dung AI',c1:'#cc5de8',c2:'#862e9c',p:.87},
+  {i:'⚖️',n:'Đạo đức AI',c1:'#22b8cf',c2:'#0b7285',p:.92}
+];
+const xImgs={};WKS.forEach(w=>xImgs[w.id]=[]);
+
+/* PARTICLES */
+(()=>{
+  const cv=document.getElementById('pc'),ctx=cv.getContext('2d');
+  let W,H,pts=[];
+  const N=60,CL=['#91a7ff','#cc5de8','#22b8cf','#fd7e14','#dbe4ff','#f3d9fa'];
+  function rsz(){W=cv.width=innerWidth;H=cv.height=innerHeight}
+  window.addEventListener('resize',rsz);rsz();
+  function P(){this.x=Math.random()*W;this.y=Math.random()*H;this.r=1+Math.random()*2.5;this.vx=(Math.random()-.5)*.4;this.vy=(Math.random()-.5)*.4;this.a=.1+Math.random()*.4;this.c=CL[Math.floor(Math.random()*CL.length)];this.ph=Math.random()*Math.PI*2;this.ps=.01+Math.random()*.02}
+  P.prototype.u=function(){this.x+=this.vx;this.y+=this.vy;this.ph+=this.ps;if(this.x<-10)this.x=W+10;if(this.x>W+10)this.x=-10;if(this.y<-10)this.y=H+10;if(this.y>H+10)this.y=-10};
+  P.prototype.d=function(){ctx.beginPath();ctx.arc(this.x,this.y,this.r,0,Math.PI*2);ctx.fillStyle=this.c;ctx.globalAlpha=this.a*(.7+.3*Math.sin(this.ph));ctx.fill()};
+  for(let i=0;i<N;i++)pts.push(new P());
+  function conn(){for(let i=0;i<pts.length;i++)for(let j=i+1;j<pts.length;j++){const dx=pts[i].x-pts[j].x,dy=pts[i].y-pts[j].y,d=Math.sqrt(dx*dx+dy*dy);if(d<120){ctx.beginPath();ctx.moveTo(pts[i].x,pts[i].y);ctx.lineTo(pts[j].x,pts[j].y);ctx.strokeStyle='#91a7ff';ctx.globalAlpha=(1-d/120)*.15;ctx.lineWidth=.8;ctx.stroke()}}}
+  (function loop(){ctx.clearRect(0,0,W,H);ctx.globalAlpha=1;conn();pts.forEach(p=>{p.u();p.d()});ctx.globalAlpha=1;requestAnimationFrame(loop)})();
+})();
+
+/* CURSOR GLOW */
+const cg=document.getElementById('cg');
+document.addEventListener('mousemove',e=>{cg.style.left=e.clientX+'px';cg.style.top=e.clientY+'px'});
+
+/* LEAVES */
+(()=>{
+  const cl=document.getElementById('ll');
+  const C=['#dbe4ff','#f3d9fa','#c5f6fa','#ffd8a8','#e5dbff'];
+  for(let i=0;i<22;i++){const l=document.createElement('div');l.className='leaf';l.style.cssText=`left:${Math.random()*100}vw;width:${10+Math.random()*10}px;height:${16+Math.random()*14}px;background:${C[Math.floor(Math.random()*C.length)]};animation-duration:${9+Math.random()*12}s;animation-delay:${Math.random()*14}s;transform:rotate(${Math.random()*360}deg) scale(${.6+Math.random()*.7})`;cl.appendChild(l)}
+})();
+
+/* NAV */
+const nav=document.getElementById('nav'),npb=document.getElementById('npb');
+window.addEventListener('scroll',()=>{
+  const s=scrollY,m=document.documentElement.scrollHeight-innerHeight;
+  npb.style.width=(s/m*100)+'%';
+  nav.classList.toggle('sc',s>40);
+  const secs=['hero','about','weeks','timeline','summary'],nm={about:'na',weeks:'nw',timeline:'nt',summary:'ns'};
+  let cur='';secs.forEach(id=>{const el=document.getElementById(id);if(el&&el.getBoundingClientRect().top<=100)cur=id});
+  document.querySelectorAll('.nls a').forEach(a=>a.classList.remove('act'));
+  if(nm[cur]){const a=document.getElementById(nm[cur]);if(a)a.classList.add('act')}
+});
+
+/* RENDER WEEK CARDS */
+function renderWKS(){
+  const g=document.getElementById('wg');g.innerHTML='';
+  WKS.forEach((w,idx)=>{
+    const ai=[...w.imgs,...xImgs[w.id]],c=document.createElement('div');
+    c.className='wc rv';c.id='wc'+w.id;
+    c.style.setProperty('--cb1',w.b1);c.style.setProperty('--cb2',w.b2);c.style.setProperty('--ca',w.ca);
+    const gal=ai.length>0
+      ?`<div style="display:flex;gap:6px;overflow-x:auto;padding:1rem 1.8rem;scrollbar-width:thin;">${ai.map((src,i)=>`<img src="${src}" style="width:88px;height:68px;object-fit:cover;border-radius:10px;flex-shrink:0;cursor:pointer;border:2px solid transparent;transition:var(--t);" onclick="openLB(${idx},${i})"/>`).join('')}</div>`
+      :'';
+    c.innerHTML=`
+      <div class="wch"><div class="wchg"></div><div class="wchg2"></div>
+        <div class="wct">
+          <div class="wcb"><span class="wn">${w.id}</span><span class="wl">Tuần</span></div>
+          <div class="wci"><div class="wctt">${w.e} ${w.t}</div><div class="wcsb">${w.s}</div></div>
+        </div>
+      </div>
+      <div class="wcbd">
+        <p class="wcd">${w.d}</p>
+        <ul class="wcta">${w.tasks.map(t=>`<li><span class="td"></span>${t}</li>`).join('')}</ul>
+      </div>
+      <div class="wcp">
+        <div class="wcpl"><span>Tiến độ hoàn thành</span><span>${w.pct}%</span></div>
+        <div class="wcpt"><div class="wcpf" style="background:linear-gradient(90deg,${w.s1},${w.s2})" data-p="${w.pct/100}"></div></div>
+      </div>
+      ${gal}
+      <div class="wda">
+        <button class="ab ab-view" id="vb${w.id}" onclick="togglePDF(${w.id})">
+          <span>👁</span><span>Xem bài tập</span>
+        </button>
+        <a class="ab ab-dl" href="${encodeURI(w.pdf)}" download><span>⬇️</span><span>Tải PDF</span></a>
+        <label class="ab ab-photo" style="cursor:pointer"><span>📷</span><span>Thêm ảnh</span><input type="file" accept="image/*" multiple style="display:none" onchange="handleUp(event,${w.id})"/></label>
+      </div>
+      <div class="pp" id="pp${w.id}">
+        <div class="ppw"><iframe src="${encodeURI(w.pdf)}" title="Bài tập Tuần ${w.id}" loading="lazy"></iframe></div>
+      </div>
+      <div class="wcf"><span class="sbadge"><span class="sdot"></span>Hoàn thành</span></div>
+    `;
+    g.appendChild(c);
+    c.addEventListener('mousemove',e=>{const r=c.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;c.style.transform=`perspective(1000px) rotateY(${x*9}deg) rotateX(${-y*7}deg) translateZ(8px)`});
+    c.addEventListener('mouseleave',()=>{c.style.transform='perspective(1000px) rotateY(0) rotateX(0) translateZ(0)'});
+  });
+}
+
+/* PDF TOGGLE */
+function togglePDF(id){
+  const pp=document.getElementById('pp'+id),vb=document.getElementById('vb'+id);
+  if(!pp||!vb)return;
+  const open=pp.classList.contains('open');
+  document.querySelectorAll('.pp.open').forEach(p=>p.classList.remove('open'));
+  document.querySelectorAll('.ab-view.popen').forEach(b=>{b.classList.remove('popen');b.querySelector('span:last-child').textContent='Xem bài tập'});
+  if(!open){
+    pp.classList.add('open');vb.classList.add('popen');
+    vb.querySelector('span:last-child').textContent='Đóng bài tập';
+    setTimeout(()=>pp.scrollIntoView({behavior:'smooth',block:'nearest'}),120);
+  }
+}
+
+/* RENDER TIMELINE */
+function renderTL(){
+  const c=document.getElementById('tli');c.innerHTML='';
+  WKS.forEach((w,i)=>{
+    const el=document.createElement('div');el.className='tli rv';el.style.transitionDelay=`${i*.12}s`;
+    el.innerHTML=`<div class="tld"></div><div class="tlc"><div class="tlwl">✦ Tuần ${w.id}</div><h3>${w.e} ${w.t}</h3><p>${w.tld}</p></div>`;
+    c.appendChild(el);
+  });
+}
+
+/* RENDER SKILLS */
+function renderSK(){
+  const g=document.getElementById('skg');
+  SKILLS.forEach((s,i)=>{
+    const c=document.createElement('div');c.className='skc rv';c.style.setProperty('--sk1',s.c1);c.style.setProperty('--sk2',s.c2);c.style.transitionDelay=`${i*.08}s`;
+    c.innerHTML=`<div class="ski">${s.i}</div><div class="skn">${s.n}</div><div class="skbt"><div class="skbf" style="background:linear-gradient(90deg,${s.c1},${s.c2})" data-p="${s.p}"></div></div>`;
+    g.appendChild(c);
+  });
+}
+
+/* IMAGE UPLOAD */
+function handleUp(ev,id){
+  Array.from(ev.target.files).forEach(f=>{
+    const r=new FileReader();
+    r.onload=e=>{xImgs[id].push(e.target.result);renderWKS();initRV()};
+    r.readAsDataURL(f);
+  });
+}
+
+/* LIGHTBOX */
+let lbW=0,lbI=0;
+function openLB(wi,ii){lbW=wi;lbI=ii;renderLB();document.getElementById('lb').classList.add('open');document.body.style.overflow='hidden'}
+function closeLB(){document.getElementById('lb').classList.remove('open');document.body.style.overflow=''}
+function renderLB(){const w=WKS[lbW],imgs=[...w.imgs,...xImgs[w.id]];if(!imgs.length)return;document.getElementById('lbimg').src=imgs[lbI];document.getElementById('lbt').textContent=`✦ Tuần ${w.id}: ${w.t}`;document.getElementById('lbcnt').textContent=`${lbI+1} / ${imgs.length}`;document.getElementById('lbth').innerHTML=imgs.map((s,i)=>`<img src="${s}" class="${i===lbI?'act':''}" onclick="lbJ(${i})"/>`).join('')}
+function lbJ(i){lbI=i;renderLB()}
+function lbN(d){const l=[...WKS[lbW].imgs,...xImgs[WKS[lbW].id]].length;lbI=(lbI+d+l)%l;renderLB()}
+document.getElementById('lbc').onclick=closeLB;
+document.getElementById('lbn').onclick=()=>lbN(1);
+document.getElementById('lbp').onclick=()=>lbN(-1);
+document.getElementById('lb').addEventListener('click',e=>{if(e.target===e.currentTarget)closeLB()});
+document.addEventListener('keydown',e=>{const lb=document.getElementById('lb');if(!lb.classList.contains('open'))return;if(e.key==='Escape')closeLB();if(e.key==='ArrowRight')lbN(1);if(e.key==='ArrowLeft')lbN(-1)});
+
+/* COUNTERS */
+function animCnt(el){
+  const tgt=+el.dataset.count,dur=1600,st=performance.now();
+  (function step(now){const p=Math.min((now-st)/dur,1),e=1-Math.pow(1-p,3);el.textContent=Math.round(e*tgt);if(p<1)requestAnimationFrame(step);else el.textContent=tgt})(performance.now());
+}
+
+/* SCROLL REVEAL */
+let obs;
+function initRV(){
+  if(obs)obs.disconnect();
+  obs=new IntersectionObserver(entries=>{
+    entries.forEach(en=>{
+      if(!en.isIntersecting)return;
+      const el=en.target;el.classList.add('vis');
+      el.querySelectorAll('.wcpf,.skbf').forEach(b=>{b.classList.add('an');b.style.transform=`scaleX(${b.dataset.p})`});
+      el.querySelectorAll('[data-count]').forEach(animCnt);
+      obs.unobserve(el);
+    });
+  },{threshold:.1});
+  document.querySelectorAll('.rv,.rvl,.rvr').forEach(el=>obs.observe(el));
+}
+
+document.addEventListener('DOMContentLoaded',()=>{renderWKS();renderTL();renderSK();setTimeout(initRV,80)});
+</script>
+</body>
+</html>
